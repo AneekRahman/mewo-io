@@ -1,0 +1,23 @@
+{
+  "name": "mewo.io",
+  "version": "1.0.0",
+  "description": "Mewo.io - It's here you make it global.",
+  "main": "server.js",
+  "scripts": {
+    "test": "holo",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "mewo",
+    "io",
+    "chat",
+    "connect"
+  ],
+  "author": "Aneek Rahman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0"
+  }
+}
