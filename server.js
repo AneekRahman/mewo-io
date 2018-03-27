@@ -20,23 +20,19 @@ app.post("/auth/login", function(req, res){
 
     pool.getConnection(function(err, conn){
 
-        if(err) throw err;
+        var query = "SELECT name FROM users WHERE BINARY username='" + username + "' AND BINARY password='" + password + "'";
 
-        var query = "SELECT username FROM users WHERE username='" + username + "' AND password='" + password + "'";
-
-        conn.query(query, function(err, rows){
-
-            if(err) throw err;
+        conn.query(query, function(err, rows, fields){
 
             if(rows.length == 1){
 
-                console.log(rows)
+                var name = rows[0].name;
 
                 res.json({
 
                     "status": 200,
-                    "message": "Logging In!...",
-                    "username": username
+                    "message": "OK",
+                    "name": name
 
                 })
 
@@ -55,6 +51,11 @@ app.post("/auth/login", function(req, res){
 
         conn.release();
 
+        pool.on("error", function(e){
+
+            console.log("Error on pool");
+
+        })
         
 
     })
